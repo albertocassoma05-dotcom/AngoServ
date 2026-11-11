@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Hardened helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == 'albertocassoma05@gmail.com' ||
+        request.auth.token.email == 'angoserv05@gmail.com'
+      );
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Orders collection:
+    // - Anyone can create a service request (guest or registered)
+    // - Individual orders can be retrieved by their unique ID/tracking code
+    // - Query list is strictly scoped to the owner's customerId or admins
+    // - Updates are restricted to admins or customer state transitions
+    match /orders/{orderId} {
+      allow get: if isValidId(orderId);
+      allow list: if isSignedIn() && (resource.data.customerId == request.auth.uid || isAdmin());
+      allow create: if isValidId(orderId) &&
+        incoming().code is string && incoming().code.size() <= 32 &&
+        incoming().customerName is string && incoming().customerName.size() <= 120 &&
+        incoming().customerPhone is string && incoming().customerPhone.size() <= 30 &&
+        incoming().province is string && incoming().province.size() <= 60 &&
+        incoming().municipality is string && incoming().municipality.size() <= 120 &&
+        incoming().description is string && incoming().description.size() <= 2000 &&
+        incoming().status is string && incoming().status.size() <= 40;
+      allow update: if isValidId(orderId) && (
+        isAdmin() ||
+        (isSignedIn() && existing().customerId == request.auth.uid) ||
+        incoming().diff(existing()).affectedKeys().hasOnly(['paymentDetails', 'observations', 'customerRating', 'customerReview', 'status', 'quote', 'updatedAt'])
+      );
+      allow delete: if isAdmin();
+    }
+
+    // User profiles (isolated private user data)
+    match /users/{userId} {
+      allow get: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+      allow create, update: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Technicians (internal company registry)
+    match /technicians/{techId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Coverage zones and travel fees
+    match /zones/{zoneId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Services catalog
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Admins list
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+  }
+}

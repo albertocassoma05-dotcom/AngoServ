@@ -1,0 +1,232 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Ordem de serviço da AngoServ para domicílio ou empresa em Angola.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador único do pedido",
+          "maxLength": 128
+        },
+        "code": {
+          "type": "string",
+          "description": "Código de acompanhamento único (ex: AS-2026-1049)",
+          "maxLength": 32
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Nome completo do cliente",
+          "maxLength": 120
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Contacto telefónico angolano (9 dígitos)",
+          "maxLength": 20
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "Email opcional do cliente",
+          "maxLength": 120
+        },
+        "customerId": {
+          "type": "string",
+          "description": "UID Firebase do cliente, se autenticado",
+          "maxLength": 128
+        },
+        "province": {
+          "type": "string",
+          "description": "Província de Angola",
+          "maxLength": 60
+        },
+        "municipality": {
+          "type": "string",
+          "description": "Município de Angola",
+          "maxLength": 120
+        },
+        "neighborhood": {
+          "type": "string",
+          "description": "Bairro do cliente",
+          "maxLength": 100
+        },
+        "address": {
+          "type": "string",
+          "description": "Endereço completo",
+          "maxLength": 300
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "ID do serviço solicitado",
+          "maxLength": 80
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "Nome do serviço solicitado",
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "description": "Descrição detalhada da necessidade ou avaria",
+          "maxLength": 2000
+        },
+        "preferredDate": {
+          "type": "string",
+          "description": "Data desejada para o atendimento",
+          "maxLength": 30
+        },
+        "preferredTimeSlot": {
+          "type": "string",
+          "description": "Turno de preferência (MANHA, TARDE, INTEGRAL)",
+          "maxLength": 20
+        },
+        "status": {
+          "type": "string",
+          "description": "Estado do pedido",
+          "maxLength": 40
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO de criação",
+          "maxLength": 40
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp ISO de atualização",
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "customerName",
+        "customerPhone",
+        "province",
+        "municipality",
+        "serviceId",
+        "description",
+        "status",
+        "createdAt"
+      ]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Perfil de utilizador autenticado por email/senha, Google ou telemóvel.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome do utilizador",
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "description": "Endereço de email do utilizador",
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "description": "Número de telefone angolano",
+          "maxLength": 25
+        },
+        "role": {
+          "type": "string",
+          "description": "Papel do utilizador (cliente ou admin)",
+          "maxLength": 20
+        },
+        "province": {
+          "type": "string",
+          "description": "Província padrão",
+          "maxLength": 60
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Data de registo",
+          "maxLength": 40
+        }
+      },
+      "required": ["uid", "role", "createdAt"]
+    },
+    "Technician": {
+      "title": "Technician",
+      "description": "Registo interno de técnicos e profissionais alocados pela AngoServ.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador do técnico",
+          "maxLength": 64
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome completo do técnico",
+          "maxLength": 100
+        },
+        "specialties": {
+          "type": "string",
+          "description": "Especialidades técnicas",
+          "maxLength": 300
+        },
+        "phone": {
+          "type": "string",
+          "description": "Telefone corporativo interno",
+          "maxLength": 25
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Disponibilidade operacional"
+        }
+      },
+      "required": ["id", "name", "phone"]
+    },
+    "Zone": {
+      "title": "Zone",
+      "description": "Taxa de deslocação e zona provincial de atendimento.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador da província",
+          "maxLength": 64
+        },
+        "province": {
+          "type": "string",
+          "description": "Nome da província",
+          "maxLength": 60
+        },
+        "travelFeeKz": {
+          "type": "number",
+          "description": "Taxa de deslocação em Kz"
+        },
+        "available": {
+          "type": "boolean",
+          "description": "Disponibilidade de atendimento"
+        }
+      },
+      "required": ["id", "province", "travelFeeKz"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Coleção central de pedidos de serviços submetidos na AngoServ"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Perfis privados de utilizadores e clientes cadastrados"
+    },
+    "/technicians/{technicianId}": {
+      "schema": "Technician",
+      "description": "Gestão interna restrita de profissionais técnicos da AngoServ"
+    },
+    "/zones/{zoneId}": {
+      "schema": "Zone",
+      "description": "Configurações provinciais de taxas de deslocação e atendimento"
+    }
+  }
+}

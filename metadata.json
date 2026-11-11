@@ -1,0 +1,6 @@
+{
+  "name": "AngoServ",
+  "description": "Plataforma de prestação de serviços ao domicílio e empresariais em Angola.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
