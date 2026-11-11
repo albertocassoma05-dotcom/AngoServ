@@ -4,14 +4,14 @@ import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 bg-[#F3F6FA]">
+    <section className="py-16 sm:py-20 bg-[#f8f7f3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
-            <Star className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />
+            <Star className="w-3.5 h-3.5 text-[#c6a364] fill-[#c6a364]" />
             <span>Depoimentos Reais de Clientes</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#292e28] tracking-tight">
             Experiências com a AngoServ
           </h2>
           <p className="mt-2.5 text-xs sm:text-base text-slate-600">
@@ -29,7 +29,7 @@ export const Testimonials: React.FC = () => {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-[#F59E0B]">
+                  <div className="flex items-center gap-1 text-[#c6a364]">
                     {Array.from({ length: t.rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
@@ -41,9 +41,9 @@ export const Testimonials: React.FC = () => {
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-xs sm:text-sm text-[#0F172A] flex items-center gap-1.5">
+                  <h4 className="font-bold text-xs sm:text-sm text-[#292e28] flex items-center gap-1.5">
                     <span>{t.name}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#DC2626]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#b94132]" />
                   </h4>
                   <p className="text-[11px] text-slate-500">{t.role} &bull; {t.location}</p>
                 </div>

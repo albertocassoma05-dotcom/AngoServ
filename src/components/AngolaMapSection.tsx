@@ -122,11 +122,11 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-100/90 text-red-700 border border-red-200 text-xs font-bold mb-3 shadow-xs">
-            <MapPin className="w-3.5 h-3.5 text-[#DC2626]" />
+            <MapPin className="w-3.5 h-3.5 text-[#b94132]" />
             <span>Presença Nacional em Angola</span>
-            <Star className="w-3 h-3 text-[#F59E0B] fill-[#F59E0B]" />
+            <Star className="w-3 h-3 text-[#c6a364] fill-[#c6a364]" />
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#292e28] tracking-tight">
             Cobertura Operacional em Angola
           </h2>
           <p className="mt-2.5 text-xs sm:text-base text-slate-600">
@@ -144,7 +144,7 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
             }}
             className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all shrink-0 ${
               activeProvinceFilter === 'Todas'
-                ? 'bg-[#0F172A] text-white shadow-md border border-slate-700'
+                ? 'bg-[#292e28] text-white shadow-md border border-slate-700'
                 : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
             }`}
           >
@@ -160,7 +160,7 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
               }}
               className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all shrink-0 ${
                 activeProvinceFilter === prov
-                  ? 'bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white shadow-md'
+                  ? 'bg-gradient-to-r from-[#b94132] to-[#9d3427] text-white shadow-md'
                   : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
@@ -172,9 +172,9 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Interactive Map: cooperative touch scrolling on mobile */}
           <div className="lg:col-span-8 bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200 flex flex-col">
-            <div className="p-3 bg-[#0F172A] text-white flex items-center justify-between text-xs px-4 border-b border-slate-800">
+            <div className="p-3 bg-[#292e28] text-white flex items-center justify-between text-xs px-4 border-b border-slate-800">
               <span className="font-bold flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
+                <ShieldCheck className="w-4 h-4 text-[#c6a364]" />
                 <span>Bases de Atendimento AngoServ</span>
               </span>
               <span className="text-slate-400 font-mono text-[11px]">Google Maps Platform</span>
@@ -200,8 +200,8 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
                         title={hub.name}
                       >
                         <Pin
-                          background={selectedHub?.id === hub.id ? '#DC2626' : '#0F172A'}
-                          glyphColor="#F59E0B"
+                          background={selectedHub?.id === hub.id ? '#b94132' : '#292e28'}
+                          glyphColor="#c6a364"
                           borderColor="#FFFFFF"
                           scale={selectedHub?.id === hub.id ? 1.25 : 1.0}
                         />
@@ -214,10 +214,10 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
                         onCloseClick={() => setSelectedHub(null)}
                       >
                         <div className="p-2 text-slate-800 max-w-xs font-sans">
-                          <h4 className="font-bold text-sm text-[#0F172A]">{selectedHub.name}</h4>
+                          <h4 className="font-bold text-sm text-[#292e28]">{selectedHub.name}</h4>
                           <p className="text-xs text-slate-500 mt-0.5">{selectedHub.address}</p>
                           <div className="mt-2 text-xs flex items-center justify-between font-bold border-t pt-1 border-slate-100">
-                            <span className="text-[#DC2626]">{selectedHub.activeTeams} equipas</span>
+                            <span className="text-[#b94132]">{selectedHub.activeTeams} equipas</span>
                             <span className="text-slate-700">{selectedHub.responseTime}</span>
                           </div>
                         </div>
@@ -227,8 +227,8 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
                 </APIProvider>
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 p-6 text-center">
-                  <MapPin className="w-12 h-12 text-[#DC2626] mb-3 animate-bounce" />
-                  <h3 className="font-bold text-[#0F172A] text-lg">Mapa de Operações de Angola</h3>
+                  <MapPin className="w-12 h-12 text-[#b94132] mb-3 animate-bounce" />
+                  <h3 className="font-bold text-[#292e28] text-lg">Mapa de Operações de Angola</h3>
                   <p className="text-xs text-slate-600 max-w-sm mt-1">
                     Bases ativas da AngoServ em Luanda, Benguela, Huambo, Lubango e demais províncias.
                   </p>
@@ -241,11 +241,11 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
           <div className="lg:col-span-4 flex flex-col justify-between gap-4">
             {selectedHub ? (
               <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-200 flex flex-col h-full">
-                <div className="flex items-center gap-1.5 text-xs font-black text-[#DC2626] uppercase tracking-wider mb-1">
+                <div className="flex items-center gap-1.5 text-xs font-black text-[#b94132] uppercase tracking-wider mb-1">
                   <MapPin className="w-4 h-4 shrink-0" />
                   <span>Província de {selectedHub.province}</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] leading-snug">{selectedHub.name}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-[#292e28] leading-snug">{selectedHub.name}</h3>
                 <p className="text-xs text-slate-500 mt-1">{selectedHub.address}</p>
 
                 <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
@@ -255,15 +255,15 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
                 <div className="grid grid-cols-2 gap-3 my-4 sm:my-5">
                   <div className="bg-amber-500/10 border border-amber-300 p-3 rounded-2xl">
                     <div className="flex items-center gap-1 text-[11px] text-amber-900 font-bold">
-                      <Clock className="w-3.5 h-3.5 text-[#F59E0B]" />
+                      <Clock className="w-3.5 h-3.5 text-[#c6a364]" />
                       <span>Tempo de Resposta</span>
                     </div>
-                    <div className="text-sm sm:text-base font-black text-[#0F172A] mt-1 font-mono">{selectedHub.responseTime}</div>
+                    <div className="text-sm sm:text-base font-black text-[#292e28] mt-1 font-mono">{selectedHub.responseTime}</div>
                   </div>
 
                   <div className="bg-red-50 border border-red-200 p-3 rounded-2xl">
                     <div className="flex items-center gap-1 text-[11px] text-red-900 font-bold">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#DC2626]" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#b94132]" />
                       <span>Equipas Prontas</span>
                     </div>
                     <div className="text-sm sm:text-base font-black text-red-900 mt-1 font-mono">{selectedHub.activeTeams} equipas</div>
@@ -273,7 +273,7 @@ export const AngolaMapSection: React.FC<AngolaMapSectionProps> = ({ onOpenBookin
                 <div className="space-y-2 mt-auto pt-2">
                   <button
                     onClick={() => onOpenBooking && onOpenBooking(selectedHub.province)}
-                    className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B91C1C] hover:from-red-600 hover:to-red-700 text-white font-bold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 transition"
+                    className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#b94132] to-[#9d3427] hover:from-red-600 hover:to-red-700 text-white font-bold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 transition"
                   >
                     <span>Solicitar Serviço em {selectedHub.province}</span>
                     <ChevronRight className="w-4 h-4 text-amber-300" />
