@@ -20,9 +20,9 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer id="contactos" className="bg-[#0F172A] text-white border-t border-slate-800 relative">
+    <footer id="contactos" className="bg-[#292e28] text-white border-t border-slate-800 relative">
       {/* Angolan Flag Accent Ribbon */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-[#DC2626] via-[#F59E0B] to-[#111827]" />
+      <div className="h-1.5 w-full bg-gradient-to-r from-[#b94132] via-[#c6a364] to-[#111827]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -35,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
                 className="w-12 h-12 rounded-xl object-contain shadow-md"
               />
               <span className="text-2xl font-black tracking-tight text-white">
-                Ango<span className="text-[#F59E0B]">Serv</span>
+                Ango<span className="text-[#c6a364]">Serv</span>
               </span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed font-serif italic">
@@ -46,14 +46,14 @@ export const Footer: React.FC<FooterProps> = ({
               técnicas e garantia de qualidade em todo o território nacional.
             </p>
             <div className="pt-2 text-xs text-amber-400 font-semibold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#DC2626]" />
+              <span className="w-2 h-2 rounded-full bg-[#b94132]" />
               <span>Cobertura em todas as 18 províncias de Angola</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#F59E0B]">Navegação Rápida</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#c6a364]">Navegação Rápida</h4>
             <ul className="space-y-2 text-xs text-slate-300">
               <li>
                 <button onClick={scrollToTop} className="hover:text-white transition">
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Services list */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#F59E0B]">Serviços Populares</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#c6a364]">Serviços Populares</h4>
             <ul className="space-y-1.5 text-xs text-slate-400">
               <li>Lavagem de Sofás, Cadeirões e Tapetes</li>
               <li>Pintura Residencial e Comercial</li>
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Official Contact Info */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#F59E0B]">Contactos Oficiais</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#c6a364]">Contactos Oficiais</h4>
             <div className="space-y-2.5 text-xs text-slate-300">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -116,14 +116,14 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                <Mail className="w-4 h-4 text-[#c6a364] shrink-0" />
                 <a href={`mailto:${COMPANY_INFO.email}`} className="hover:underline">
                   {COMPANY_INFO.email}
                 </a>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#DC2626] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#b94132] shrink-0 mt-0.5" />
                 <span>{COMPANY_INFO.officeAddress}</span>
               </div>
             </div>
